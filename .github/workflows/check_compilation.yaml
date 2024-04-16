@@ -1,0 +1,22 @@
+# This workflow is triggered on push to any branch.
+# It compiles LaTeX document with latexmk to check if there are any errors.
+name: Check LaTeX compilation on push
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+          latexmk_shell_escape: true
