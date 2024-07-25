@@ -58,6 +58,7 @@
 \usepackage{bm}
 \usepackage[overload]{empheq} % For braced-style systems of equations.
 \usepackage{fix-cm} % To override original LaTeX restrictions on sizes
+\usepackage{cancel}
 
 % PACKAGES FOR TABLES
 \usepackage{tabularx}
@@ -103,6 +104,8 @@
 %	ADD YOUR DEFINITIONS AND COMMANDS (be careful of existing commands)
 %----------------------------------------------------------------------------
 
+\input{Configuration_Files/personal_shortcut}
+
 %----------------------------------------------------------------------------
 %	BEGIN OF YOUR DOCUMENT
 %----------------------------------------------------------------------------
@@ -123,11 +126,12 @@
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 
 \puttitle{
-	title=Springs and BEM, % Title of the thesis
+	title=Nonlinear Springs and, % Title of the thesis
+    titletwo=Boundary Element Method,
 	name=Matteo Bonfadini, % Author Name and Surname
 	course=Advanced Computational Mechanics - G. Novati, % Study Programme (in Italian)
     master=Mathematical Engineering, % Mster Degree
-	ID  = XXXXXX,  % Student ID number (numero di matricola)
+    datetoday = {25/07/2024},
 	academicyear={2023-24},  % Academic Year
 } % These info will be put into your Title page 
 
@@ -162,7 +166,7 @@
 % --------------------------------------------------------------------------
 % NUMBERED CHAPTERS % Regular chapters following
 % --------------------------------------------------------------------------
-\chapter{System of Nonlinear Springs}
+\chapter{Systems of Nonlinear Springs}
 \label{ch:chapter_one}%
 % The \label{...}% enables to remove the small indentation that is generated, always leave the % symbol.
 \input{Projects/project1.tex} \cleardoublepage
@@ -174,7 +178,7 @@
 
 % --------------------------------------------------------------------------
 
-\input{Projects/to_be_erased.tex} \cleardoublepage
+%\input{Projects/to_be_erased.tex} \cleardoublepage
 
 %-------------------------------------------------------------------------
 %	BIBLIOGRAPHY
@@ -187,42 +191,16 @@
 %	APPENDICES
 %-------------------------------------------------------------------------
 
-\cleardoublepage
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
-\appendix
-\chapter{Appendix A}
-If you need to include an appendix to support the research in your thesis, you can place it at the end of the manuscript.
-An appendix contains supplementary material (figures, tables, data, codes, mathematical proofs, surveys, \dots)
-which supplement the main results contained in the previous chapters.
-
-\chapter{Appendix B}
-It may be necessary to include another appendix to better organize the presentation of supplementary material.
-
-
 % LIST OF FIGURES
-\listoffigures
+%\listoffigures
 
 % LIST OF TABLES
-\listoftables
+%\listoftables
 
 % LIST OF ALGORITHM (matlab)
-\tcblistof[\chapter*]{matalg}{List of Algorithm}
+%\tcblistof[\chapter*]{matalg}{List of Algorithm}
 
 % LIST OF SYMBOLS
-% Write out the List of Symbols in this page
-\chapter*{List of Symbols} % You have to include a chapter for your list of symbols (
-\begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-        \textbf{Variable} & \textbf{Description} & \textbf{SI unit} \\\hline\\[-9px]
-        $\bm{u}$ & solid displacement & m \\[2px]
-        $\bm{u}_f$ & fluid displacement & m \\[2px]
-    \end{tabular}
-\end{table}
-
-% ACKNOWLEDGEMENTS
-\chapter*{Acknowledgements}
-Here you might want to acknowledge someone.
 
 \cleardoublepage
 

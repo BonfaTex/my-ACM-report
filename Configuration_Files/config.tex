@@ -1,20 +1,36 @@
 % Define blue color typical of polimi
 \definecolor{bluepoli}{cmyk}{0.4,0.1,0,0.4}
 
+\usepackage{thmtools} % to include qed symbol et al.
+
 % Custom theorem environments
 \declaretheoremstyle[
   headfont=\color{bluepoli}\normalfont\bfseries,
   bodyfont=\color{black}\normalfont\itshape,
-]{colored}
+]{colored_it}
+
+\renewcommand{\qedsymbol}{\textcolor{bluepoli}{\openbox}}
+
+\declaretheoremstyle[
+  headfont=\color{bluepoli}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+  qed=\qedsymbol
+]{colored_normal}
 
 % Set-up caption colors
 \captionsetup[figure]{labelfont={color=bluepoli}} % Set colour of the captions
 \captionsetup[table]{labelfont={color=bluepoli}} % Set colour of the captions
 \captionsetup[algorithm]{labelfont={color=bluepoli}} % Set colour of the captions
 
-\theoremstyle{colored}
+\theoremstyle{colored_it}
 \newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
 \newtheorem{proposition}{Proposition}[chapter]
+
+\declaretheorem{demo}[style=colored_normal,
+                      heading=Proof,
+                      numbered=no]
+
 
 % Enhances the features of the standard "table" and "tabular" environments.
 \newcommand\T{\rule{0pt}{2.6ex}}

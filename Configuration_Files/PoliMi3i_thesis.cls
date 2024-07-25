@@ -88,6 +88,7 @@
 % Define keys for title pages
 \newif\if@cosupervisorexist\@cosupervisorexistfalse
 \define@key[OIST]{title}{title}{\def\thesistitle{#1}}
+\define@key[OIST]{title}{titletwo}{\def\thesistitletwo{#1}}
 \define@key[OIST]{title}{course}{\def\course{#1}}
 \define@key[OIST]{title}{master}{\def\master{#1}}
 \define@key[OIST]{title}{name}{\def\name{#1}}
@@ -96,6 +97,7 @@
 \define@key[OIST]{title}{coadvisor}{\def\coadvisor{#1}\@cosupervisorexisttrue}
 \define@key[OIST]{title}{academicyear}{\def\academicyear{#1}}
 \define@key[OIST]{title}{course}{\def\course{#1}}
+\define@key[OIST]{title}{datetoday}{\def\datetoday{#1}}
 
 \providecommand{\puttitle}{}
 \renewcommand{\puttitle}[1]{
@@ -116,7 +118,7 @@
             \\
 			\vspace{2.5cm}
 			\\
-			{{\color{bluepoli} \singlespacing \huge \bfseries \thesistitle \par}}	
+			{{\color{bluepoli} \singlespacing \huge \bfseries {\thesistitle \\ \thesistitletwo} \par}}	
 			\vspace{1.5cm}
 			{\color{bluepoli} \bfseries \large{\textsc{Final Report of\\ \course}}\par}
             \vspace{0.5cm}
@@ -129,8 +131,8 @@
 			\\
 			\begin{minipage}{0.85\textwidth}
 			\normalsize{
-			Student ID: {\ID}
-			\\
+            Date: {\datetoday}
+            \\
 			Academic Year: {\academicyear}
 			}
 			\end{minipage}

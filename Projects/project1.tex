@@ -7,7 +7,7 @@ Many engineering applications show nonlinear behaviours, and linear systems cann
 
 In general there is no analytical way of finding the solution of a system of nonlinear equations, and this explains why computational sciences have become increasingly in demand.
 
-In the following section we discuss a variation of a problem presented during the course and in the book \cite{namhokim}.
+In the following section we discuss a variation of a problem presented during the course and in the book~\cite{namhokim}.
 
 \section{System of Nonlinear Springs}
 \label{sec:system_NL_springs}%
@@ -22,10 +22,10 @@ Consider three non-linear springs connected in series and in parallel, as shown 
 \end{figure}
 
 The stiffness of the springs depends on the elongation of springs such that
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_1}
 k_i = k_i\left( e_i \right) = \alpha_i+\beta_i\cdot e_i\quad [\text{N/mm}],\qquad\qquad i=1,2,3,
-\end{equation}
+\end{equation*}
 with $e_i$ being the elongation of the $i$-th spring and coefficients $\left( \alpha_i,\beta_i \right)$ being listed in Table~\ref{table:alpha_beta}. In this way, although the geometry of the problem is linear, it is ruled by nonlinear costitutive laws.
 
 In Figure~\ref{fig:springs_first} is also shown the load application $F=100\ [\text{N}]$ at the tip.
@@ -60,7 +60,7 @@ From Figure~\ref{fig:main13_1} one can notice that the stiffness (the local tang
 \end{figure}
 
 Since springs 1 and 2 are fixed on the wall, their elongation is equivalent to $u_1$, while for spring 3, the elongation is $u_2-u_1$. It's very easy to find out the equilibrium of the two nodes:
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_2}
 \left\{
 \begin{aligned}
@@ -68,21 +68,21 @@ N_1+N_2-N_3&=0, \\
 N_3&=F.\\
 \end{aligned}
 \right.
-\end{equation}
+\end{equation*}
 
-It follows that the matrix notation of the system in term of unknown displacement $u$ is
+It follows that the matrix notation of the system in term of unknown displacement $\mathbf{u}$ is
 \begin{equation}
 \label{eq:spring_25}
 \mathbf{P}(\mathbf{u})=\mathbf{f}
 \end{equation}
 or, in a more physical notation,
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_275}
 \mathbf{F}^{\textbf{int}}(\mathbf{u})=\mathbf{F}^{\textbf{ext}},
-\end{equation}
+\end{equation*}
 
 hence, the system is the following:
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_3}
 \left[
 \begin{array}{cc}
@@ -103,27 +103,27 @@ hence, the system is the following:
  F
 \end{array}
 \right].
-\end{equation}
+\end{equation*}
 
 Note that, as we said before, the above equations are not linear as the stiffness matrix contains unknown variables.
 
 Using the given stiffness of springs, the general matrix equation becomes
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_4}
 \begin{cases}
 \left( \beta_1+\beta_2-\beta_3 \right)u_1^2 +\left( \alpha_1+\alpha_2+\alpha_3 \right)u_1+2\beta_3u_1u_2-\alpha_3u_2-\beta_3u_2^2=0 \\
 \beta_3u_1^2-\alpha_3u_1-2\beta_3u_1u_2+\alpha_3u_2+\beta_3u_2^2=F
 \end{cases},
-\end{equation}
+\end{equation*}
 
 which, for the sake of generality, leads to
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_5}
 \begin{cases}
 \mathcal{A}u_1^2 +\mathcal{B}u_1+\mathcal{C}u_1u_2+\mathcal{D}u_2+\mathcal{E}u_2^2=0 \\
 \mathcal{F}u_1^2 +\mathcal{G}u_1+\mathcal{H}u_1u_2+\mathcal{I}u_2+\mathcal{L}u_2^2=F
 \end{cases}.
-\end{equation}
+\end{equation*}
 
 In this way it will be easier to build the system in MATLAB, namely with
 \begin{equation}
@@ -146,13 +146,13 @@ u_2^2
 \end{equation}
 
 Finally, the assembled system is
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_7}
 \begin{cases}
 50u_1^2+1200u_1+200u_1u_2-500u_2-100u_2^2=0 \\
 100u_1^2-500u_1-200u_1u_2+500u_2+100u_2^2=100
 \end{cases}.
-\end{equation}
+\end{equation*}
 
 In the following section, a method of solving the system of nonlinear equations is discussed.
 
@@ -160,20 +160,20 @@ In the following section, a method of solving the system of nonlinear equations 
 \label{sec:numerical_solution1}%
 
 Before discussing systems, it is important to understand the problem of numerical approximation of the zeros of a real-valued function of one variable, that is
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_8}
 \boxed{\text{Given }f:(a,b)\to\mathbb{R},\text{ find }\alpha\in\mathbb{R}\text{ s.t. }f(\alpha)=0}
-\end{equation}
+\end{equation*}
 
 There are several iterative methods to solve this rootfinding problem, such as the bisection method, the chord method, the secant method, fixed point methods, etc. For a more complete treatment of these, see for example \cite{quarter}.
 
 In the following we analyze another algorithm: the Newton's method, also known as the \textbf{Newton–Raphson method}.
 
 Assuming that $f\in\mathcal{C}^1\big( (a,b) \big)$ and that $\alpha$ is a simple root of $f$, if we let
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_9}
 q_k=f' ( x^k ),\qquad\forall k\geq 0
-\end{equation}
+\end{equation*}
 and assign the initial value $x^0$, we obtain the Newton scheme
 \begin{equation}
 \label{eq:spring_10}
@@ -181,10 +181,10 @@ x^{k+1}=x^k-\frac{f( x^k )}{q_k},\qquad k\geq 0.
 \end{equation}
 
 The idea is clarified by looking at the first-order series expansion of $f(x)$ in the neighborhood of $x^k$
-\begin{equation}
+\begin{equation*}
 \label{eq:spring_11}
-f(x)\approx f ( x^k )+\left[\frac{\text{d}f}{\text{d}x}(x^k)\right](x-x^k) \qquad\ \xrightarrow[]{x=x^{k+1}} \qquad \text{Equation~\eqref{eq:spring_10}}
-\end{equation}
+f(x)\approx f ( x^k )+\left[\frac{\text{d}f}{\text{d}x}(x^k)\right](x-x^k) \qquad\ \xrightarrow[]{x=x^{k+1}} \qquad \text{Eq.~\eqref{eq:spring_10}}
+\end{equation*}
 
 and by Figure~\ref{fig:quart1}.
 
@@ -195,18 +195,18 @@ and by Figure~\ref{fig:quart1}.
     \label{fig:quart1}
 \end{figure}
 
-This method has an high order convergence, namely $p=2$, i.e.
+This method has an high convergence order, namely $p=2$, i.e.
 \begin{equation}
 \label{eq:spring_12}
 \exists C>0\qquad\text{s.t.}\qquad \lim_{k\to\infty}\frac{\left| x^{k+1}-\alpha \right|}{\left| x^{k}-\alpha \right|^2}=C,
 \end{equation}
 but $\alpha$ should be a simple root and the initial value $x^0$ should be \emph{close} to the solution, because the method does not always guarantee convergence (actually, sometimes the solution may diverge or oscillate between two points). 
 
-An immediate extension of Newton-Raphson’s method~\eqref{eq:spring_10} for the nonlinear system ~\eqref{eq:spring_25} can be recursively formulated as
-\begin{equation}
+An immediate extension of Newton-Raphson’s method~\eqref{eq:spring_10} for the nonlinear system~\eqref{eq:spring_25} can be recursively formulated as
+\begin{equation*}
 \label{eq:spring_13}
 \mathbf{u}^{k+1}=\mathbf{u}^k+\frac{ \mathbf{f}-\mathbf{P}(\mathbf{u}^k) }{\mathbf{K}_T^k}\qquad \text{with}\qquad \mathbf{K}_T^k=\frac{\partial\mathbf{P}}{\partial\mathbf{u}}(\mathbf{u}^k) ,
-\end{equation}
+\end{equation*}
 
 which leads to the following algorithm:
 \begin{subequations}
@@ -224,23 +224,23 @@ In general, this solution will not satisfy the system of nonlinear equations exa
 \label{eq:spring_18}
 \text{conv}^{\,k+1}=\frac{\displaystyle\sum_{j=1}^n\left( \text{R}_j^{k+1} \right)^2}{1+\displaystyle\sum_{j=1}^n\left( \text{f}_j \right)^2},
 \end{equation}
-and, in order to show quadratic convergence as in Equation~\eqref{eq:spring_12}, it is often enough to show that $\textbf{conv}$ reduces quadratically at each iteration.
+and, in order to show quadratic convergence as in Eq.~\eqref{eq:spring_12}, it is often enough to show that $\textbf{conv}$ reduces quadratically at each iteration.
 
 \smallskip
 
 \begin{marker}
-From Equation~\eqref{eq:spring_16}, one can notice that at each step $k$ the solution of a linear system with matrix $\mathbf{K}_T^k$ is required, thus the matrix cannot be singular. We will use the \emph{backslash} MATLAB command to solve the system, but the computational cost increases as $n^2$. There are several ways to solve this, for example use the LU decomposition and keep it fixed for some iterations, or just keep $\mathbf{K}_T^k$ fixed. See Secion~\ref{sec:numerical_implementation1} for further details.
+From Eq.~\eqref{eq:spring_16}, one can notice that at each step $k$ the solution of a linear system with matrix $\mathbf{K}_T^k$ is required, thus the matrix cannot be singular. We will use the \emph{backslash} MATLAB command to solve the system, but the computational cost increases as $n^2$. There are several ways to solve this, for example use the LU decomposition and keep it fixed for some iterations, or just keep $\mathbf{K}_T^k$ fixed. See Secion~\ref{sec:MATLAB_implementation1} for further details.
 \end{marker}
 
 \newpage
 
-\section{Numerical Implementation}
-\label{sec:numerical_implementation1}%
+\section{MATLAB Implementation}
+\label{sec:MATLAB_implementation1}%
 
-Here we present and explain the MATLAB scripts used to solve the problem. The algorithms are listed in the Subsection~\ref{sub:matlab_scripts1}.
+Here we present and explain the MATLAB scripts used to solve the problem. Algorithms are listed in the Subsection~\ref{sub:matlab_scripts1}.
 
 In \texttt{main11} (Algorithm~\ref{alg:main11}) we implement the Newton-Raphson method previously described. Here two auxiliary functions are used to compute the internal force vector $\mathbf{P}(\mathbf{u})$ and its Jacobian matrix $\mathbf{K}_T$ at each iteration. These MATLAB functions \newline
-\texttt{generate\_int\_force} (Algorithm~\ref{alg:generate_int_force}) and \texttt{generate\_jacobian} (Algorithm~\ref{alg:generate_jacobian}) are merely based on Equation~\eqref{eq:spring_6}.
+\texttt{generate\_int\_force} (Algorithm~\ref{alg:generate_int_force}) and \texttt{generate\_jacobian} (Algorithm~\ref{alg:generate_jacobian}) are merely based on Eq.~\eqref{eq:spring_6}.
 
 The output of the code is the following:
 \begin{matlaboutput}
@@ -298,7 +298,7 @@ Convergence reached in 5 iterations
 *********************************************************************
 \end{matlaboutput}
 
-From all these outputs we can say that as MATLAB program iterates, the displacements converge to the numerical solution $\mathbf{u}=[0.13873;0.33132]$ mm; secondly, the number of iterations depends on the starting point, however the residual reduction via convergence criterion \eqref{eq:spring_18} is approximately quadratic.
+From all these outputs we can say that as MATLAB program iterates, the displacements converges to the numerical solution $\mathbf{u}=[0.13873;0.33132]$ mm; secondly, the number of iterations depends on the starting point, however the residual reduction via convergence criterion~\eqref{eq:spring_18} is approximately quadratic.
 
 We can double check the accuracy of our solution via plotting the surfaces of the system of nonlinear equations with zero-level contour. The results we obtain with \texttt{main12} (Algorithm~\ref{alg:main12}) ant the \texttt{plotzeros} function (Algorithm~\ref{alg:plotzeros}) are the following figures:
 \begin{figure}[H]
